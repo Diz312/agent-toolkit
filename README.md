@@ -30,61 +30,32 @@ machine, and reaches the other machines at their next `skillshare pull`.
 
 ## New machine
 
-macOS with [Homebrew](https://brew.sh). Install the AI tools you use (Claude Code, Cursor, ...)
-first, so skillshare detects them.
-
-**1. Tools and GitHub access**
+Install the AI apps you use (Claude Code, Cursor, ...) first, so they are detected. Then:
 
 ```bash
-brew install gh skillshare node      # node >= 24.22.1: MCP servers run through npx (rea needs it)
-gh auth login && gh auth setup-git   # skillshare-source is private; git must be able to read it
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/Diz312/agent-toolkit/main/bootstrap.sh)"
 ```
 
-**2. Secrets.** MCP configs only hold `${VAR}` references; each machine keeps the values in one file.
+[`bootstrap.sh`](bootstrap.sh) does everything else, and is safe to re-run any time:
 
-```bash
-mkdir -p ~/.secrets
-gh api repos/Diz312/agent-toolkit/contents/.env.example -H "Accept: application/vnd.github.raw" \
-  > ~/.secrets/agent.env
-chmod 600 ~/.secrets/agent.env
-$EDITOR ~/.secrets/agent.env         # fill in each KEY=value; comments say where to get them
-```
+1. **Tools**: installs Homebrew if missing, then `git`, `gh`, `skillshare`, `uv` and Node >= 24.22.1.
+2. **GitHub**: signs in if needed so git can push (`gh auth setup-git`).
+3. **Secrets**: asks for every key in [`.env.example`](.env.example) that isn't in
+   `~/.secrets/agent.env` yet (input hidden; Enter skips).
+4. **Skills, MCP servers, plugins**: runs skillshare-source's `bootstrap.sh`. It connects
+   `~/.config/skillshare` to the repo, links all skills into the AI tools it finds, wires MCP servers
+   to Claude Code / Cursor / Codex / Gemini CLI, installs the Claude Code plugins in `plugins.txt`,
+   and loads the secrets in shells (`~/.zshrc`) and GUI apps (`com.diz312.agent-env` LaunchAgent).
+5. **This repo**: clones it to `~/myCode/agent-toolkit` (or `$AGENT_TOOLKIT_DIR`) and installs the
+   `git pull` hook with a first `scripts/apply.py` run.
+6. **Herdr**: if Herdr is installed, adds the skillshare panel and switches to its layout.
+7. **Check**: `skillshare doctor` and `claude mcp list`, then lists anything that needs you.
 
-**3. Bootstrap** (idempotent; re-run any time)
+Afterwards, quit and reopen Claude Code (desktop and terminal sessions) and Cursor.
 
-```bash
-gh api repos/Diz312/skillshare-source/contents/bootstrap.sh -H "Accept: application/vnd.github.raw" | sh
-```
-
-It connects `~/.config/skillshare` to the repo, pulls every skill, adds the AI tools it finds as
-targets, wires MCP servers to Claude Code / Cursor / Codex / Gemini CLI, installs the Claude Code
-plugins from `plugins.txt`, makes the secrets visible to shells (`~/.zshrc`) and to GUI apps (a
-`com.diz312.agent-env` LaunchAgent), then syncs and runs `skillshare mcp check`.
-
-**4. Restart and check.** Quit and reopen Claude Code (desktop and terminal sessions), Cursor and
-any other AI app, then:
-
-```bash
-skillshare doctor        # skills linked, integrity, MCP and plugins OK
-skillshare mcp check     # every server's command found and every ${VAR} set
-claude mcp list          # servers connect
-```
-
-In a new Claude Code session, ask it to list its skills and MCP servers.
-
-### Also on the scout machine
-
-One machine runs the scout and applies the catalog. It needs this repo and `uv`:
-
-```bash
-brew install uv
-git clone https://github.com/Diz312/agent-toolkit.git ~/myCode/agent-toolkit
-cd ~/myCode/agent-toolkit && uv run --script scripts/apply.py --install-hook   # hook + first apply
-```
-
-Then schedule the scout in the Claude desktop app: a daily scheduled task in
-`~/myCode/agent-toolkit` with the prompt "Run the toolkit scout". Each run opens at most one PR and
-refreshes the browse page (its URL is kept in `~/.agent-toolkit/page.json`).
+**The scout runs on one machine only** (two would open duplicate PRs). On that machine, add a daily
+scheduled task in the Claude desktop app, in `~/myCode/agent-toolkit`, with the prompt "Run the
+toolkit scout". It refreshes the browse page, whose URL is kept in `~/.agent-toolkit/page.json`.
 
 ## Day to day
 
@@ -95,8 +66,8 @@ refreshes the browse page (its URL is kept in `~/.agent-toolkit/page.json`).
 | Try a skill without curating it | `skillshare install <github url> -g`, then `skillshare push` to share it. `apply.py` never removes what it didn't install; `skillshare uninstall <name> -g` removes it |
 | Work on my own skills | Edit `local-skills/<name>/`, then `uv run --script scripts/apply.py`: it re-copies changed skills and pushes |
 | Update pinned skills | The scout proposes `ref` bumps after reading the diff; `skillshare check` shows what has moved upstream |
-| Add a secret | Add `VAR=` with a comment to `.env.example`; on each machine add the value to `~/.secrets/agent.env` and re-run the bootstrap (or log out and in) so GUI apps see it |
-| Start using a new AI tool | Install it, re-run the bootstrap. For its MCP servers, add it to `mcp.targets` in `~/.config/skillshare/config.yaml` and run `skillshare sync mcp` |
+| Add a secret | Add `VAR=` with a comment to `.env.example`; on each machine re-run `bootstrap.sh`: it asks for the new value and loads it for shells and GUI apps |
+| Start using a new AI tool | Install it, re-run `bootstrap.sh`. For its MCP servers, add it to `mcp.targets` in `~/.config/skillshare/config.yaml` and run `skillshare sync mcp` |
 | Check health | `skillshare doctor`, `skillshare mcp check`, or the Herdr skillshare panel |
 
 ## Rules
@@ -130,6 +101,7 @@ refreshes the browse page (its URL is kept in `~/.agent-toolkit/page.json`).
 | `catalog/mcp.yaml` | MCP servers, pinned versions, secrets as `${VAR}` |
 | `catalog/plugins.yaml` | Plugins, with their `harness` |
 | `local-skills/` | My own skills (`toolkit-scout`, `youtube-learn`), installed into skillshare as copies |
+| `bootstrap.sh` | Sets up a new machine end to end |
 | `scripts/apply.py` | Applies the catalog to skillshare; only removes what it installed |
 | `config/preferences.yaml` | Categories, search queries, limits: what the scout looks for |
 | `reports/` | Daily scout reports; `latest.json` feeds the browse page |
