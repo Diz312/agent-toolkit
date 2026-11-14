@@ -1,0 +1,69 @@
+# What toolkit-scout looks for. The single place priorities live; edit freely.
+
+# Categories. Keywords guide search and scoring; the scout also judges what a tool actually does.
+categories:
+  agentic-app-dev:
+    weight: 1.0
+    about: >-
+      The best skills, plugins and MCP servers for building and testing full-stack agentic apps
+      of any kind: agent frameworks and SDKs, multi-agent orchestration, tool/MCP building,
+      backend and frontend, databases, testing and evals, debugging, git and CI, deployment,
+      and code knowledge graphs that scan many repos and map code structure.
+    keywords: [agent, agentic, sdk, multi-agent, orchestration, mcp builder, tool calling,
+               full stack, fastapi, react, next.js, typescript, python, database, postgres,
+               sqlite, testing, tdd, evals, playwright, debugging, code review, git,
+               pull request, ci, deploy, docker, code graph, knowledge graph, codebase,
+               monorepo, tree-sitter, static analysis]
+  context-engineering:
+    weight: 1.0
+    about: Memory, live docs lookup, codebase indexing and search, skill and prompt authoring,
+      context and token budget management.
+    keywords: [context engineering, context, memory, prompt, retrieval, rag, knowledge base,
+               documentation, docs, compaction, token, embeddings, semantic search, index]
+  reverse-engineering:
+    weight: 1.0
+    about: REA and similar tools for binaries, firmware, mobile/Electron apps, protocols and
+      undocumented APIs.
+    keywords: [reverse engineering, reverse-engineering, ghidra, ida pro, hopper, binary ninja,
+               radare2, rizin, frida, decompile, disassembl, firmware, apk, electron, binary,
+               malware, protocol, rea]
+  everyday-automation:
+    weight: 0.8
+    about: Email and calendar, notes, documents, browser automation, research and summaries.
+    keywords: [automation, productivity, calendar, email, gmail, notes, notion, obsidian, todo,
+               browser, scraping, pdf, docx, spreadsheet, research, summarize, youtube]
+
+# GitHub repository searches (sequential; search API allows ~30 calls/minute).
+github_queries:
+  - "topic:agent-skills"
+  - "topic:claude-skills"
+  - "topic:claude-code-plugin"
+  - "SKILL.md skills in:readme stars:>200"
+  - "topic:mcp-server stars:>500"
+  - "code knowledge graph mcp"
+  - "reverse engineering mcp"
+  - "context engineering agent"
+  - "agent evals testing mcp"
+
+# Curated lists whose README links count as endorsements.
+curated_lists:
+  - travisvn/awesome-claude-skills
+  - ComposioHQ/awesome-claude-skills
+  - VoltAgent/awesome-agent-skills
+  - hesreallyhim/awesome-claude-code
+  - punkpeye/awesome-mcp-servers
+
+# Publishers treated as official / high trust.
+official_orgs: [anthropics, modelcontextprotocol, github, microsoft, google, googleapis,
+                google-gemini, openai, cloudflare, vercel, stripe, supabase, upstash, awslabs,
+                hashicorp, grafana, getsentry, makenotion, figma, playwright]
+
+# MCP registry search terms (registry.modelcontextprotocol.io).
+registry_searches: [github, playwright, browser, memory, docs, code graph, ghidra, database,
+                    postgres, sqlite, gmail, calendar, notion, obsidian, youtube]
+
+limits:
+  max_repos_scanned: 40       # repos whose trees are walked for SKILL.md files
+  max_additions_per_run: 5    # new items proposed per PR
+  min_stars: 25               # community repos below this are ignored (official/curated exempt)
+  stale_days: 365             # repos not pushed in this many days are dropped

@@ -1,0 +1,43 @@
+[project]
+name = "agent-toolkit"
+version = "0.1.0"
+description = "Curated, harness-agnostic skills, MCP servers and plugins, with a daily scout."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+# Dev tooling only. The scripts themselves are standalone `uv run --script` files.
+[dependency-groups]
+dev = [
+    "black>=25.1",
+    "mypy>=1.15",
+    "pre-commit>=4.0",
+    "pytest>=8.3",
+    "pytest-cov>=6.0",
+    "pyyaml>=6.0",
+    "ruff>=0.9",
+    "tomlkit>=0.13",
+    "types-pyyaml>=6.0",
+]
+
+[tool.uv]
+package = false
+
+[tool.black]
+line-length = 100
+extend-exclude = "local-skills/youtube-learn"
+
+[tool.ruff]
+line-length = 100
+extend-exclude = ["local-skills/youtube-learn"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+ignore = ["B023"]  # loop-bound defaults in lambdas are intentional
+
+[tool.mypy]
+strict = true
+files = ["local-skills/toolkit-sync/scripts", "local-skills/toolkit-scout/scripts", "tests"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

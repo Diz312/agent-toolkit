@@ -1,0 +1,17 @@
+mcp:
+- name: rea
+  category: reverse-engineering
+  description: Reverse Engineer Anything - lets the agent analyze native binaries, Electron/JS apps and .NET assemblies via Hopper, Ghidra or IDA.
+  why: Requested by the user; the reference reverse-engineering MCP.
+  source: https://github.com/morluto/rea
+  transport: stdio
+  command: npx
+  args: [-y, rea-agents@6.9.0, mcp]
+- name: gitnexus
+  category: agentic-app-dev
+  description: Code knowledge graph across many repos (tree-sitter); query structure, call chains and blast radius. Index a repo with `npx gitnexus analyze`.
+  why: Requested by the user - scan code across multiple monorepos as one knowledge graph. License is PolyForm Noncommercial (fine for personal use; not for commercial work).
+  source: https://github.com/abhigyanpatwari/GitNexus
+  transport: stdio
+  command: npx
+  args: [-y, gitnexus@1.6.12, mcp]
