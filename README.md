@@ -9,8 +9,10 @@ every harness (Claude Code, Codex, Gemini CLI, Antigravity, Cursor).
    searches Anthropic, the MCP registry, GitHub and curated lists, reviews the best finds for fit
    and safety, and opens one PR that edits `catalog/`. It also refreshes the browse page.
 2. **Review.** I merge the PR, edit it, or close it.
-3. **Sync (each machine).** `git pull` triggers the `toolkit-sync` script via a git hook. It
-   installs everything in the catalog into each harness's own format.
+3. **Apply (each machine).** `git pull` runs `scripts/apply.py` via a git hook. It installs the
+   catalog through [skillshare](https://github.com/runkids/skillshare) (pinned, audited), which
+   syncs skills, MCP servers and plugins into every harness, then pushes skillshare's source repo
+   so other machines get it with `skillshare pull`.
 
 ## Layout
 
@@ -20,19 +22,30 @@ every harness (Claude Code, Codex, Gemini CLI, Antigravity, Cursor).
 | `catalog/skills.yaml` | Upstream skills, pinned to a commit |
 | `catalog/mcp.yaml` | MCP servers, pinned versions, secrets as `${VAR}` |
 | `catalog/plugins.yaml` | Harness-specific plugins |
-| `local-skills/` | My own skills (including the scout and sync skills) |
+| `local-skills/` | My own skills (including the scout); installed into skillshare as copies |
+| `scripts/apply.py` | Applies the catalog to skillshare; only removes what it installed |
 | `reports/` | Daily scout reports; `latest.json` feeds the browse page |
-| `.env.example` | Secret names; real values go in `~/.agent-toolkit/.env` |
+| `.env.example` | Secret names; real values go in `~/.secrets/agent.env` |
 
 ## New machine
 
+Every machine gets the toolkit from skillshare's source repo:
+
 ```bash
-git clone https://github.com/Diz312/agent-toolkit.git ~/agent-toolkit
-mkdir -p ~/.agent-toolkit && cp ~/agent-toolkit/.env.example ~/.agent-toolkit/.env
-uv run --script ~/agent-toolkit/local-skills/toolkit-sync/scripts/sync.py --install-hook
+mkdir -p ~/.secrets && cp .env.example ~/.secrets/agent.env && chmod 600 ~/.secrets/agent.env
+gh api repos/Diz312/skillshare-source/contents/bootstrap.sh -H "Accept: application/vnd.github.raw" | sh
 ```
 
-Requires `uv`, and `gh` logged in. After that, `git pull` keeps the machine in sync.
+Then `skillshare pull && skillshare sync --all` (or the Herdr skillshare panel) keeps it current.
+
+Only the machine that runs the scout needs this repo:
+
+```bash
+git clone https://github.com/Diz312/agent-toolkit.git ~/myCode/agent-toolkit
+uv run --script ~/myCode/agent-toolkit/scripts/apply.py --install-hook
+```
+
+Requires `uv`, `skillshare` (`brew install skillshare`) and `gh` logged in.
 
 ## Development
 
