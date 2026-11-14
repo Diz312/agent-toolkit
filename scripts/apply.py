@@ -49,6 +49,11 @@ MCP_HEADER = (
     "# (values live in ~/.secrets/agent.env on each machine).\n"
 )
 
+PLUGINS_HEADER = (
+    "# Claude Code plugins for every machine: <name> <plugin@marketplace> <marketplace repo>.\n"
+    "# Written by agent-toolkit's scripts/apply.py (catalog/plugins.yaml); read by bootstrap.sh.\n"
+)
+
 Run = Callable[[list[str]], "subprocess.CompletedProcess[str]"]
 
 
@@ -245,17 +250,35 @@ def apply_mcp(repo: Path, report: Report, state: dict[str, list[str]]) -> bool:
     return changed
 
 
+def write_plugin_list(report: Report, lines: list[str]) -> None:
+    """plugins.txt in the skillshare source: what bootstrap.sh installs on other machines."""
+    path = SS / "plugins.txt"
+    text = PLUGINS_HEADER + "".join(f"{line}\n" for line in sorted(lines))
+    if (path.read_text() if path.is_file() else None) == text:
+        return
+    report.done.append(("[dry-run] " if report.dry_run else "") + "plugins.txt: update")
+    if not report.dry_run:
+        path.write_text(text)
+
+
 def apply_plugins(repo: Path, report: Report, run: Run, state: dict[str, list[str]]) -> None:
     cfg_file = SS / "config.yaml"
     cfg = (yaml.safe_load(cfg_file.read_text()) or {}) if cfg_file.is_file() else {}
     have = set(((cfg.get("plugins") or {}).get("packages") or {}).keys())
     wanted: set[str] = set()
+    lines: list[str] = []
     for p in read_yaml(repo / "catalog/plugins.yaml", "plugins"):
         name, ident = p["name"], f"{p['plugin']}@{p['marketplace_name']}"
         if p.get("harness", "claude-code") != "claude-code":
             report.errors.append(f"plugin {name}: install by hand in {p['harness']}")
             continue
         wanted.add(name)
+        lines.append(f"{name} {ident} {p['marketplace']}")
+    write_plugin_list(report, lines)
+    for p in read_yaml(repo / "catalog/plugins.yaml", "plugins"):
+        name, ident = p["name"], f"{p['plugin']}@{p['marketplace_name']}"
+        if name not in wanted:
+            continue
         if name in have:
             state["plugins"].append(name)
             continue
