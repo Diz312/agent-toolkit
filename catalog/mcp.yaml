@@ -23,3 +23,11 @@ mcp:
   transport: http
   url: https://mcp.context7.com/mcp
   headers: {Authorization: "Bearer ${CONTEXT7_API_KEY}"}
+- name: playwright
+  category: agentic-app-dev
+  description: "Browser automation over the accessibility tree: navigate, click, fill forms, screenshot and run end-to-end checks."
+  why: "Official Microsoft, in the MCP registry (40k stars); gives every harness a live browser for testing, not only Claude Code."
+  source: https://github.com/microsoft/playwright-mcp
+  transport: stdio
+  command: npx
+  args: [-y, "@playwright/mcp@0.0.85"]
