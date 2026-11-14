@@ -198,6 +198,8 @@ def test_plugins_install_and_import(env: tuple[ModuleType, Path, Path]) -> None:
     calls = run.joined()
     assert "claude plugin install lsp@m -s user" in calls
     assert "skillshare plugin import lsp@m --from claude --name lsp --no-tui" in calls
+    listed = (home / ".config/skillshare/plugins.txt").read_text().splitlines()
+    assert [ln for ln in listed if not ln.startswith("#")] == ["lsp lsp@m o/m"]  # not antigravity
     (home / ".config/skillshare/config.yaml").write_text(
         yaml.safe_dump({"plugins": {"packages": {"lsp": {}}}})
     )
