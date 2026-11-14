@@ -1,1 +1,19 @@
-plugins: []
+plugins:
+- name: pyright-lsp
+  harness: claude-code
+  marketplace: anthropics/claude-plugins-official
+  marketplace_name: claude-plugins-official
+  plugin: pyright-lsp
+  category: agentic-app-dev
+  description: "Pyright language server for Claude Code: type errors, go-to-definition and references in .py/.pyi files."
+  why: "Official Anthropic plugin; gives Claude live type checking on the uv/mypy Python stack. Needs pyright on PATH."
+  source: https://github.com/anthropics/claude-plugins-official/tree/main/plugins/pyright-lsp
+- name: typescript-lsp
+  harness: claude-code
+  marketplace: anthropics/claude-plugins-official
+  marketplace_name: claude-plugins-official
+  plugin: typescript-lsp
+  category: agentic-app-dev
+  description: "TypeScript/JavaScript language server for Claude Code: diagnostics, go-to-definition and references."
+  why: "Official Anthropic plugin; covers the generated TypeScript side of the stack. Needs typescript-language-server on PATH."
+  source: https://github.com/anthropics/claude-plugins-official/tree/main/plugins/typescript-lsp

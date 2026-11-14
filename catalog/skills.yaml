@@ -90,3 +90,10 @@ skills:
   category: "context-engineering"
   description: "Interviews the user in rounds over a design tree of decisions, recommending an answer for each, until nothing is left assumed."
   why: "Required by grill-me; also triggers on its own for 'grill me' requests."
+- name: frontend-design
+  repo: anthropics/skills
+  path: skills/frontend-design
+  ref: 41bbe19d1a1a7eaab5e7bb9050a417e5c6cffc8f
+  category: agentic-app-dev
+  description: "Guidance for distinctive, intentional UI design: aesthetic direction, typography, and avoiding templated defaults."
+  why: "Official Anthropic; covers the frontend half of full-stack apps, which nothing installed addresses. Instruction-only."
