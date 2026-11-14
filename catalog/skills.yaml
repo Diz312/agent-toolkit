@@ -1,1 +1,78 @@
-skills: []
+skills:
+- name: mcp-builder
+  repo: anthropics/skills
+  path: skills/mcp-builder
+  ref: ca45fc496a3436251f191354091d557da31c15b5
+  category: agentic-app-dev
+  description: "Guide for building high-quality MCP servers (Python/TypeScript), with evaluation scripts."
+  why: "Official Anthropic; core to building agentic apps that expose tools."
+- name: skill-creator
+  repo: anthropics/skills
+  path: skills/skill-creator
+  ref: b9e19e6f44773509fbdd7001d77ff41a49a486c1
+  category: context-engineering
+  description: "Create, test and tune agent skills, including trigger-description optimization and evals."
+  why: "Official Anthropic; makes every future local skill better. Portable copy for non-Claude harnesses."
+- name: webapp-testing
+  repo: anthropics/skills
+  path: skills/webapp-testing
+  ref: b9e19e6f44773509fbdd7001d77ff41a49a486c1
+  category: agentic-app-dev
+  description: "Test local web apps with Playwright: run servers, drive the UI, capture screenshots and logs."
+  why: "Official Anthropic; closes the build-then-verify loop for full-stack apps."
+- name: test-driven-development
+  repo: obra/superpowers
+  path: skills/test-driven-development
+  ref: 5bf4e78011075bcfc0dc295f0724994cd123ee71
+  category: agentic-app-dev
+  description: "Red-green-refactor discipline for agent-written code."
+  why: "Superpowers (317k stars, 4 curated lists); keeps agents honest about tests."
+- name: systematic-debugging
+  repo: obra/superpowers
+  path: skills/systematic-debugging
+  ref: 22f0b463e7a5e579904dd6211a520321035526f7
+  category: agentic-app-dev
+  description: "Root-cause-first debugging process instead of guess-and-patch."
+  why: "Superpowers; reduces thrash on hard bugs."
+- name: writing-plans
+  repo: obra/superpowers
+  path: skills/writing-plans
+  ref: 8ca22dba9a94f28898bbce59f2537ff4d87c747d
+  category: agentic-app-dev
+  description: "Turn a spec into a detailed, testable implementation plan."
+  why: "Superpowers; pairs with executing-plans."
+- name: executing-plans
+  repo: obra/superpowers
+  path: skills/executing-plans
+  ref: 22f0b463e7a5e579904dd6211a520321035526f7
+  category: agentic-app-dev
+  description: "Execute a written plan in reviewed batches with checkpoints."
+  why: "Superpowers; pairs with writing-plans."
+- name: verification-before-completion
+  repo: obra/superpowers
+  path: skills/verification-before-completion
+  ref: 3be5aad3dd2400ef23b15680969f4bcd3b6d7b8b
+  category: agentic-app-dev
+  description: "Require evidence (tests, output) before claiming work is done."
+  why: "Superpowers; cuts false 'done' reports."
+- name: requesting-code-review
+  repo: obra/superpowers
+  path: skills/requesting-code-review
+  ref: bb92a77741419a4ab5f06e711a283343f1ada0c3
+  category: agentic-app-dev
+  description: "Prepare and request a focused code review of agent changes."
+  why: "Superpowers; review loop."
+- name: receiving-code-review
+  repo: obra/superpowers
+  path: skills/receiving-code-review
+  ref: 3fb75974186ea7fada621d8ab77b3b02169baf57
+  category: agentic-app-dev
+  description: "Evaluate review feedback critically before applying it."
+  why: "Superpowers; review loop."
+- name: using-git-worktrees
+  repo: obra/superpowers
+  path: skills/using-git-worktrees
+  ref: bc868020bbcec32bbaf9d6b51fa0538dba0b487f
+  category: agentic-app-dev
+  description: "Isolate feature work in git worktrees with safety checks."
+  why: "Superpowers; supports parallel agent work."

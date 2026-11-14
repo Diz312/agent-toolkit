@@ -71,7 +71,8 @@ For each, actually open it (`gh api repos/<repo>/contents/<path>` or the README)
 
 ## 5. Write the changes (in `$WT`)
 
-Catalog entry formats (keep fields in this order, 2-space YAML):
+Catalog entry formats (keep fields in this order, 2-space YAML). Always double-quote
+`description` and `why` values; the dry-run in step 6 fails on unquoted colons:
 
 ```yaml
 # catalog/skills.yaml - pin to a full commit SHA; path = folder containing SKILL.md
