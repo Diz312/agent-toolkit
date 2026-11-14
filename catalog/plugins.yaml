@@ -15,5 +15,5 @@ plugins:
   plugin: typescript-lsp
   category: agentic-app-dev
   description: "TypeScript/JavaScript language server for Claude Code: diagnostics, go-to-definition and references."
-  why: "Official Anthropic plugin; covers the generated TypeScript side of the stack. Needs typescript-language-server on PATH."
+  why: "Official Anthropic plugin; covers the JavaScript (Next.js) side of the stack, using the types Next and React ship. Needs typescript-language-server on PATH."
   source: https://github.com/anthropics/claude-plugins-official/tree/main/plugins/typescript-lsp

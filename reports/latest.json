@@ -57,7 +57,7 @@
       "official": true,
       "score": 89,
       "verdict": "proposed",
-      "reason": "Official manifest-only plugin; diagnostics for the generated TypeScript. Needs typescript-language-server installed."
+      "reason": "Official manifest-only plugin; diagnostics for JavaScript (Next.js) code. Needs typescript-language-server installed."
     },
     {
       "kind": "skill",
