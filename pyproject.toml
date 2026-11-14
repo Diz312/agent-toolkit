@@ -37,7 +37,7 @@ ignore = ["B023"]  # loop-bound defaults in lambdas are intentional
 
 [tool.mypy]
 strict = true
-files = ["local-skills/toolkit-sync/scripts", "local-skills/toolkit-scout/scripts", "tests"]
+files = ["scripts", "local-skills/toolkit-scout/scripts", "tests"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

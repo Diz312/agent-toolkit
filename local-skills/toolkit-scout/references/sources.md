@@ -67,3 +67,13 @@ gh api "repos/<repo>" --jq '{archived, pushed: .pushed_at}'   # flag archived fo
 For pinned MCP packages, compare the pinned version with the latest:
 `npm view <pkg> version` / `curl -s https://pypi.org/pypi/<pkg>/json | jq -r .info.version`.
 Propose a bump only after reading the changelog/release notes.
+
+## 6. skillshare search and hub
+
+skillshare (the installer this catalog is applied through) has its own GitHub/hub search.
+Treat its results like any other source: score and review them, never install from here.
+
+```bash
+skillshare search "<query from preferences>" --json --list --limit 30
+skillshare search --hub --json --list --limit 30   # the skillshare-hub index
+```
