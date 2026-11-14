@@ -1,8 +1,36 @@
 {
   "generated_at": "2026-11-14T16:06:30Z",
-  "summary": "First scout run. Proposing 5 additions: Context7 for live docs, the Superpowers dev-loop skills, and Anthropic's mcp-builder, webapp-testing and skill-creator. Graphify is on the watchlist as a commercially licensed alternative to GitNexus.",
+  "summary": "First scout run. Proposing 6 additions: Context7 for live docs, the Superpowers dev-loop skills, Anthropic's mcp-builder, webapp-testing and skill-creator, and grill-me (with its grilling engine) at your request. Graphify is on the watchlist as a commercially licensed alternative to GitNexus.",
   "pr_url": "https://github.com/Diz312/agent-toolkit/pull/1",
   "candidates": [
+    {
+      "kind": "skill",
+      "name": "grilling",
+      "url": "https://github.com/mattpocock/skills/tree/HEAD/skills/productivity/grilling",
+      "repo": "mattpocock/skills",
+      "category": "agentic-app-dev",
+      "description": "Design-tree interview engine behind grill-me.",
+      "stars": 324277,
+      "pushed_at": "2026-11-13T12:30:31Z",
+      "official": false,
+      "score": 82,
+      "verdict": "proposed",
+      "reason": "Requested by the user. Instruction-only (no scripts); grill-me requires grilling."
+    },
+    {
+      "kind": "skill",
+      "name": "grill-me",
+      "url": "https://github.com/mattpocock/skills/tree/HEAD/skills/productivity/grill-me",
+      "repo": "mattpocock/skills",
+      "category": "agentic-app-dev",
+      "description": "Relentless interview to sharpen a plan or design.",
+      "stars": 324277,
+      "pushed_at": "2026-11-13T12:30:31Z",
+      "official": false,
+      "score": 82,
+      "verdict": "proposed",
+      "reason": "Requested by the user. Instruction-only (no scripts); grill-me requires grilling."
+    },
     {
       "kind": "mcp",
       "name": "context7",
