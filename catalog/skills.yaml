@@ -80,13 +80,13 @@ skills:
   repo: mattpocock/skills
   path: skills/productivity/grill-me
   ref: fcf0071560d32913c9d4f820e0d7ca467c881619
-  category: "agentic-app-dev"
+  category: "context-engineering"
   description: "Manual trigger (/grill-me) for a relentless interview that sharpens a plan or design. Hands off to the grilling skill."
   why: "Requested by the user. Stress-tests designs before building."
 - name: grilling
   repo: mattpocock/skills
   path: skills/productivity/grilling
   ref: 7739eaed7f8f3915437a8def198a6d0d7206dbc7
-  category: "agentic-app-dev"
+  category: "context-engineering"
   description: "Interviews the user in rounds over a design tree of decisions, recommending an answer for each, until nothing is left assumed."
   why: "Required by grill-me; also triggers on its own for 'grill me' requests."

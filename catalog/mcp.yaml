@@ -16,7 +16,7 @@ mcp:
   command: npx
   args: [-y, gitnexus@1.6.12, mcp]
 - name: context7
-  category: context-engineering
+  category: "agentic-app-dev"
   description: "Up-to-date, version-specific library docs and code examples pulled into the agent's context."
   why: "The most-used live-docs MCP (65k stars); directly serves the Code Accuracy Protocol (verify APIs before writing code)."
   source: https://github.com/upstash/context7
