@@ -97,3 +97,10 @@ skills:
   category: agentic-app-dev
   description: "Guidance for distinctive, intentional UI design: aesthetic direction, typography, and avoiding templated defaults."
   why: "Official Anthropic; covers the frontend half of full-stack apps, which nothing installed addresses. Instruction-only."
+- name: writing-for-agents
+  repo: mattpocock/skills
+  path: skills/productivity/writing-for-agents
+  ref: 321658273cb1d20b76026717d027d505790106d4
+  category: context-engineering
+  description: "Reference for writing documents agents consume (skills, AGENTS.md, CLAUDE.md): context pointers, progressive disclosure, completion criteria."
+  why: "Same trusted repo as grill-me; complements skill-creator (which tests skills) by teaching how to write them. Instruction-only, audit clean."
