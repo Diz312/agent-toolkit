@@ -97,3 +97,17 @@ skills:
   category: agentic-app-dev
   description: "Guidance for distinctive, intentional UI design: aesthetic direction, typography, and avoiding templated defaults."
   why: "Official Anthropic; covers the frontend half of full-stack apps, which nothing installed addresses. Instruction-only."
+- name: deepeval
+  repo: confident-ai/deepeval
+  path: skills/deepeval
+  ref: 0078eff6c7d6a3f94f0fbfaf16f5d1183e5a05cf
+  category: agentic-app-dev
+  description: "Add pytest-based eval suites to AI agents, RAG pipelines and chatbots: datasets, metrics, traced evals and a fix-from-failures loop."
+  why: "Nothing installed covers agent evals; pytest-native, so it fits the uv/pytest stack (19.5k stars, Apache-2.0). Confident AI cloud reporting is opt-in and asks first. Audit clean."
+- name: create-mcp-app
+  repo: modelcontextprotocol/ext-apps
+  path: plugins/mcp-apps/skills/create-mcp-app
+  ref: c5b25431155d72a0a2cb4f45f635e243ad1ea844
+  category: agentic-app-dev
+  description: "Build MCP Apps: an MCP tool paired with an interactive HTML UI resource that renders inside Claude and other MCP hosts."
+  why: "Official MCP org; covers the UI side of MCP servers that mcp-builder does not. Instruction-only, audit clean."
