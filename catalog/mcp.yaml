@@ -31,3 +31,11 @@ mcp:
   transport: stdio
   command: npx
   args: [-y, "@playwright/mcp@0.0.85"]
+- name: chrome-devtools
+  category: agentic-app-dev
+  description: "Chrome DevTools for agents: performance traces, network and console inspection, and page automation in a real Chrome."
+  why: "Official Chrome DevTools team (58k stars, Apache-2.0); adds performance and network debugging that Playwright MCP lacks. Google usage statistics and CrUX lookups are on by default, so both are turned off here; --isolated uses a throwaway profile."
+  source: https://github.com/ChromeDevTools/chrome-devtools-mcp
+  transport: stdio
+  command: npx
+  args: [-y, chrome-devtools-mcp@1.13.0, --no-usage-statistics, --no-performance-crux, --isolated]

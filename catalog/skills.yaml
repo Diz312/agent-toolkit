@@ -97,3 +97,31 @@ skills:
   category: agentic-app-dev
   description: "Guidance for distinctive, intentional UI design: aesthetic direction, typography, and avoiding templated defaults."
   why: "Official Anthropic; covers the frontend half of full-stack apps, which nothing installed addresses. Instruction-only."
+- name: finishing-a-development-branch
+  repo: obra/superpowers
+  path: skills/finishing-a-development-branch
+  ref: b36e0829c6d0140e93cfef2ca599b1b07d4a7797
+  category: agentic-app-dev
+  description: "Close out a branch: verify tests, then offer merge, PR, keep or discard, and clean up the worktree."
+  why: "Superpowers (319k stars, 4 curated lists); completes the using-git-worktrees loop and never force-pushes or merges without asking. Instruction-only, audit clean."
+- name: tool-design
+  repo: muratcankoylan/Agent-Skills-for-Context-Engineering
+  path: skills/tool-design
+  ref: 8fc51c7cbaf90e26c0df9ec72da2f6ab3060f278
+  category: agentic-app-dev
+  description: "Design agent-facing tools: routable descriptions, schemas, response formats, error recovery, and tool-set consolidation."
+  why: "Fills the interface layer mcp-builder skips (what makes a tool usable by an agent). MIT, 18k stars, VoltAgent list; audit clean, local helper script only."
+- name: multi-agent-patterns
+  repo: muratcankoylan/Agent-Skills-for-Context-Engineering
+  path: skills/multi-agent-patterns
+  ref: 8fc51c7cbaf90e26c0df9ec72da2f6ab3060f278
+  category: agentic-app-dev
+  description: "Choose and design multi-agent architectures: supervisor, swarm, handoffs, context isolation, and when not to split."
+  why: "Covers multi-agent orchestration, a core agentic-app-dev need nothing installed addresses. MIT; audit LOW only (reference links)."
+- name: context-optimization
+  repo: muratcankoylan/Agent-Skills-for-Context-Engineering
+  path: skills/context-optimization
+  ref: 7638f30c4b59b09fcebe915fda4b5bd1e3999d35
+  category: context-engineering
+  description: "Context budgeting, observation masking, KV-cache-friendly prefixes, partitioning and compaction for agent apps."
+  why: "First installed skill aimed at token and context budgets in the apps you build. MIT; audit clean, local helper script only."
