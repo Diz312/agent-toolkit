@@ -17,3 +17,12 @@ plugins:
   description: "TypeScript/JavaScript language server for Claude Code: diagnostics, go-to-definition and references."
   why: "Official Anthropic plugin; covers the JavaScript (Next.js) side of the stack, using the types Next and React ship. Needs typescript-language-server on PATH."
   source: https://github.com/anthropics/claude-plugins-official/tree/main/plugins/typescript-lsp
+- name: session-report
+  harness: claude-code
+  marketplace: anthropics/claude-plugins-official
+  marketplace_name: claude-plugins-official
+  plugin: session-report
+  category: context-engineering
+  description: "Explorable HTML report of Claude Code usage from local transcripts: tokens, cache hit rate, subagents, skills and the most expensive prompts."
+  why: "Official Anthropic; gives the cost tracking your principles ask for across all projects. Read-only local analyzer (no network), audit clean. Needs node on PATH."
+  source: https://github.com/anthropics/claude-plugins-official/tree/main/plugins/session-report
