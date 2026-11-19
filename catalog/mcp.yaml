@@ -30,4 +30,4 @@ mcp:
   source: https://github.com/microsoft/playwright-mcp
   transport: stdio
   command: npx
-  args: [-y, "@playwright/mcp@0.0.85"]
+  args: [-y, "@playwright/mcp@0.0.86"]
