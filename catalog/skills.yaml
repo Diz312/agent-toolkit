@@ -97,3 +97,10 @@ skills:
   category: agentic-app-dev
   description: "Guidance for distinctive, intentional UI design: aesthetic direction, typography, and avoiding templated defaults."
   why: "Official Anthropic; covers the frontend half of full-stack apps, which nothing installed addresses. Instruction-only."
+- name: fastmcp-server
+  repo: PrefectHQ/fastmcp
+  path: docs/.mintlify/skills/fastmcp-server
+  ref: a514cf9604309490240bab2c7d6782c5f68d5c57
+  category: agentic-app-dev
+  description: "Build, extend or review Python MCP servers with FastMCP, checking the docs that match the project's installed version first."
+  why: "From the FastMCP maintainers (28.7k stars, Apache-2.0, pushed today). Adds the framework-specific half that the generic mcp-builder lacks, on the Python/uv stack. Instruction-only; audit: 1 LOW (external doc link)."
