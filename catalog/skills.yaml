@@ -97,3 +97,10 @@ skills:
   category: agentic-app-dev
   description: "Guidance for distinctive, intentional UI design: aesthetic direction, typography, and avoiding templated defaults."
   why: "Official Anthropic; covers the frontend half of full-stack apps, which nothing installed addresses. Instruction-only."
+- name: domain-modeling
+  repo: mattpocock/skills
+  path: skills/engineering/domain-modeling
+  ref: 2b7ab8c9471fad3fca0a9c0c9e1f52153408172b
+  category: context-engineering
+  description: "Builds a project's shared language as you design: challenges fuzzy terms, keeps GLOSSARY.md current, and writes ADRs in docs/adr/ only for hard-to-reverse trade-offs."
+  why: "Same repo as the installed grill-me/grilling; turns the 'document decisions as you make them' rule into a habit and gives agents a glossary to read. Instruction-only, audit clean."
