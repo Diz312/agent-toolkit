@@ -6,7 +6,7 @@ mcp:
   source: https://github.com/morluto/rea
   transport: stdio
   command: npx
-  args: [-y, rea-agents@6.9.0, mcp]
+  args: [-y, rea-agents@6.10.1, mcp]
 - name: gitnexus
   category: agentic-app-dev
   description: "Code knowledge graph across many repos (tree-sitter); query structure, call chains and blast radius. Index a repo with `npx gitnexus analyze`."
@@ -30,4 +30,4 @@ mcp:
   source: https://github.com/microsoft/playwright-mcp
   transport: stdio
   command: npx
-  args: [-y, "@playwright/mcp@0.0.85"]
+  args: [-y, "@playwright/mcp@0.0.86"]

@@ -97,3 +97,17 @@ skills:
   category: agentic-app-dev
   description: "Guidance for distinctive, intentional UI design: aesthetic direction, typography, and avoiding templated defaults."
   why: "Official Anthropic; covers the frontend half of full-stack apps, which nothing installed addresses. Instruction-only."
+- name: tool-design
+  repo: muratcankoylan/Agent-Skills-for-Context-Engineering
+  path: skills/tool-design
+  ref: 8fc51c7cbaf90e26c0df9ec72da2f6ab3060f278
+  category: agentic-app-dev
+  description: "Design agent-facing tools: descriptions agents can route on, schemas, response formats, naming and actionable errors."
+  why: "Fills the design gap next to mcp-builder (which covers building, not tool-catalog design). MIT, 18k stars, curated list; audit clean."
+- name: multi-agent-patterns
+  repo: muratcankoylan/Agent-Skills-for-Context-Engineering
+  path: skills/multi-agent-patterns
+  ref: 8fc51c7cbaf90e26c0df9ec72da2f6ab3060f278
+  category: agentic-app-dev
+  description: "Choose and design multi-agent topologies: supervisor, swarm, handoffs, context isolation, and when not to use multiple agents."
+  why: "Directly serves the agentic-app goal (clear agent hierarchy); nothing installed covers orchestration design. MIT; audit has only 4 LOW external-link notes."

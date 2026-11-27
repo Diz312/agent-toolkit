@@ -17,3 +17,21 @@ plugins:
   description: "TypeScript/JavaScript language server for Claude Code: diagnostics, go-to-definition and references."
   why: "Official Anthropic plugin; covers the JavaScript (Next.js) side of the stack, using the types Next and React ship. Needs typescript-language-server on PATH."
   source: https://github.com/anthropics/claude-plugins-official/tree/main/plugins/typescript-lsp
+- name: agent-sdk-dev
+  harness: claude-code
+  marketplace: anthropics/claude-plugins-official
+  marketplace_name: claude-plugins-official
+  plugin: agent-sdk-dev
+  category: agentic-app-dev
+  description: "Scaffold new Claude Agent SDK apps (/new-sdk-app, Python or TypeScript) and check them with SDK verifier agents."
+  why: "Official Anthropic; the user builds agentic apps and nothing installed covers the Agent SDK. Commands and agents only, no hooks or MCP. It asks before choosing tools, so uv can be requested."
+  source: https://github.com/anthropics/claude-plugins-official/tree/main/plugins/agent-sdk-dev
+- name: claude-md-management
+  harness: claude-code
+  marketplace: anthropics/claude-plugins-official
+  marketplace_name: claude-plugins-official
+  plugin: claude-md-management
+  category: context-engineering
+  description: "Audit CLAUDE.md files against the codebase (claude-md-improver) and capture session learnings with /revise-claude-md."
+  why: "Official Anthropic; every project here starts with a CLAUDE.md and nothing keeps them current. Shows diffs and edits only after approval; no hooks."
+  source: https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-md-management
