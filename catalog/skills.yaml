@@ -97,3 +97,17 @@ skills:
   category: agentic-app-dev
   description: "Guidance for distinctive, intentional UI design: aesthetic direction, typography, and avoiding templated defaults."
   why: "Official Anthropic; covers the frontend half of full-stack apps, which nothing installed addresses. Instruction-only."
+- name: fastapi
+  repo: fastapi/fastapi
+  path: fastapi/.agents/skills/fastapi
+  ref: b0a616d9fa301a50bf5809c64f97e5f2d6ae941d
+  category: agentic-app-dev
+  description: "Official FastAPI skill: current idioms for Annotated dependencies, response models, SSE/streaming, body limits, OpenTelemetry and the fastapi CLI."
+  why: "From the FastAPI maintainers (105k stars, MIT), pinned to the 0.165.0 release content; the backend half of the stack that nothing installed covers. Instruction-only, audit 10 LOW (doc links). Mentions ty and FastAPI Cloud only when available or asked; mypy rule still applies."
+- name: single-agent-loop
+  repo: anthropics/single-agent-loop-kit
+  path: skill
+  ref: c43796287b83bec847db923f07131d1cc8de750d
+  category: agentic-app-dev
+  description: "Audit a router-plus-subagents system and fold, merge or keep each subagent as a tool, measured against the same eval before and after."
+  why: "Official Anthropic (Apache-2.0); an eval-driven refactoring procedure for multi-agent apps that the pending multi-agent-patterns only describes. Asks before every paid eval run; local stdlib-only scripts. Repo is a reference kit, not maintained."
